@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>从一局牌认识这个站点 · 德州扑克app</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+      background-color: #faf9f7;
+      color: #1f1f1f;
+      line-height: 1.7;
+      padding: 0 1.25rem;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: #1e2126;
+      color: #eae8e3;
+      margin: 0 -1.25rem 2.5rem -1.25rem;
+      padding: 4.5rem 1.5rem 3.8rem 1.5rem;
+      text-align: center;
+      border-bottom: 4px solid #c99f5e;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 550;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.65rem;
+      color: #ffffff;
+    }
+
+    .hero .sub {
+      max-width: 580px;
+      margin: 0.5rem auto 0;
+      font-size: 1.1rem;
+      color: #bfbbb0;
+      font-weight: 380;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto 3rem auto;
+      background: #ffffff;
+      padding: 2.5rem 2.8rem 3.2rem 2.8rem;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    /* 文章标题 & 导语 */
+    .article-header {
+      margin-bottom: 2.2rem;
+      border-bottom: 1px solid #ebebeb;
+      padding-bottom: 1.2rem;
+    }
+
+    .article-header h2 {
+      font-size: 1.7rem;
+      font-weight: 540;
+      color: #131313;
+      margin-bottom: 0.4rem;
+    }
+
+    .article-header .meta {
+      font-size: 0.9rem;
+      color: #7f7b74;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      background: #f4f3f0;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid #c99f5e;
+      margin-bottom: 2rem;
+      border-radius: 0 8px 8px 0;
+      color: #2c2a27;
+    }
+
+    /* 正文段落 */
+    p {
+      margin-bottom: 1.4rem;
+    }
+
+    a {
+      color: #b8863e;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: #8a6426;
+      text-decoration-thickness: 2px;
+    }
+
+    .quote-block {
+      background: #f2efe9;
+      padding: 1.25rem 1.75rem;
+      margin: 1.8rem 0;
+      border-radius: 12px;
+      font-style: normal;
+      color: #3b3935;
+      border: 1px solid #e2ddd4;
+      position: relative;
+    }
+
+    .quote-block::before {
+      content: "“";
+      font-size: 3rem;
+      line-height: 0.8;
+      color: #c99f5e;
+      position: absolute;
+      left: 0.8rem;
+      top: 0.2rem;
+      font-weight: 500;
+      opacity: 0.6;
+    }
+
+    .quote-block p {
+      margin-bottom: 0.25rem;
+      padding-left: 2rem;
+    }
+
+    .highlight {
+      background: #faf0da;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+      font-weight: 450;
+    }
+
+    .faq-section {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed #d6d1c8;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-q {
+      font-weight: 550;
+      color: #1f1f1f;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-a {
+      color: #46433e;
+      padding-left: 0.2rem;
+    }
+
+    .visit-tag {
+      display: inline-block;
+      background: #1e2126;
+      color: #f1ede6;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      margin-top: 0.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* 按钮/卡片 —— 极简线框 */
+    .scene-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0 1rem 0;
+    }
+
+    .scene-card {
+      background: #fcfcfb;
+      border: 1px solid #e2ddd4;
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      flex: 1 1 200px;
+      transition: box-shadow 0.1s;
+    }
+
+    .scene-card h4 {
+      font-size: 1rem;
+      font-weight: 530;
+      margin-bottom: 0.3rem;
+      color: #1f1f1f;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #4e4b45;
+      margin-bottom: 0;
+    }
+
+    footer {
+      max-width: 820px;
+      margin: 1.5rem auto 3rem auto;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #8b8780;
+      border-top: 1px solid #e1ddd6;
+      padding-top: 1.8rem;
+    }
+
+    @media (max-width: 540px) {
+      .hero {
+        padding: 3rem 1rem 2.6rem 1rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 1.5rem 1.2rem 2rem 1.2rem;
+      }
+      .article-header h2 {
+        font-size: 1.35rem;
+      }
+      .scene-cards {
+        flex-direction: column;
+      }
+      .lead {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <div class="hero">
+    <h1>在牌桌边找到方向</h1>
+    <div class="sub">一局牌，一个工具，一种节奏 · 关于 <a href="https://cn-holdemapp.com" style="color:#e0c99a; text-decoration: underline;">德州扑克app</a> 的简单介绍</div>
+  </div>
+
+  <div class="container">
+
+    <!-- 文章标题 + 导语 -->
+    <div class="article-header">
+      <h2>打开页面时，你在找什么？</h2>
+      <div class="meta">
+        <span>📅 最近更新 · 2025</span>
+        <span>📌 站点用途说明</span>
+      </div>
+    </div>
+
+    <div class="lead">
+      不管你是刚接触这项游戏，还是想找一个能踏实对局、不绕弯子的工具，这里都值得你看两眼。没有天花乱坠的承诺，只有一款 <strong>德州扑克app</strong> 该有的样子。
+    </div>
+
+    <!-- 正文1：从用户视角切入 -->
+    <p>
+      很多人第一次搜到这个网站时，心里大概就两个问题：<span class="highlight">这是什么？</span> 以及 <span class="highlight">跟我有什么关系？</span> 说实话，挺直接的。这个页面背后就是一款实实在在的 <a href="https://cn-holdemapp.com">德州扑克app</a>，没有附加登录、没有弹窗注册，你点进去就能看到核心功能——对局、记录、节奏控制，都是牌桌上最常碰到的那些事。
+    </p>
+
+    <p>
+      开发者没有把它包装成什么「大师系统」或「必赢秘籍」，而是尽量保留扑克本身的感觉：判断、计算、心态，再加上一点随机性。如果你之前用过一些花里胡哨的软件，可能会觉得这里干净得有点不习惯，但不少人反而觉得这样更自在。
+    </p>
+
+    <!-- 引用提示块 -->
+    <div class="quote-block">
+      <p>“我不需要软件教我打牌，我需要一个能让我专注对局、少些干扰的工具。这个 app 做到了。” —— 来自某位普通玩家的评价</p>
+    </div>
+
+    <!-- 特点场景 采用卡片式 -->
+    <div class="scene-cards">
+      <div class="scene-card">
+        <h4>♠️ 快速上手</h4>
+        <p>没有冗长的教程，打开就能开始练习或对战，规则内置但不过度解释，适合老手也适合想试水的新人。</p>
+      </div>
+      <div class="scene-card">
+        <h4>♦️ 数据记录</h4>
+        <p>手牌、底池、行动记录一目了然，你可以回过头复盘自己当时的决定，而不是凭感觉瞎猜。</p>
+      </div>
+      <div class="scene-card">
+        <h4>♣️ 干净界面</h4>
+        <p>没有闪烁广告、没有诱导充值，牌桌就是牌桌。视觉上偏简洁，注意力可以放在决策上。</p>
+      </div>
+    </div>
+
+    <!-- 正文2：进一步描述使用场景 -->
+    <p>
+      无论是午休时想来一局快速的单挑，还是晚上静下心打几轮满人桌，这个 <a href="https://cn-holdemapp.com">德州扑克app</a> 都能适配不同的节奏。它不催促你，也不刻意拖时间——每局行动时间可调，适合习惯思考的玩家，也适合喜欢快节奏的人。关键是，它不收集多余的隐私数据，也不推送乱七八糟的资讯。
+    </p>
+
+    <p>
+      另外，很多用户反馈过同一个细节：这 app 里的<span class="highlight">弃牌率、加注频率</span>统计做得很直观。你不用切出去算 Excel，直接看界面上的趋势图就行。对认真对待每一手牌的人来说，这些数字本身就很有分量。
+    </p>
+
+    <!-- FAQ 摘要（简短，克制） -->
+    <div class="faq-section">
+      <div class="faq-item">
+        <div class="faq-q">❓ 需要注册或付费吗？</div>
+        <div class="faq-a">完全不需要。打开即可使用部分核心功能，无强制注册，无隐藏订阅。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ 这个 app 适合新手吗？</div>
+        <div class="faq-a">适合。规则说明清晰但不啰嗦，你可以边玩边学，没有教学压力。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ 有在线对战或人机模式？</div>
+        <div class="faq-a">两种都有。你可以自己练习，也可以匹配其他真实玩家（无机器人伪装）。</div>
+      </div>
+    </div>
+
+    <!-- 访问句（自然嵌入链接） -->
+    <p style="margin-top: 1.8rem;">
+      如果你想亲自感受一下，可以直接前往 <a href="https://cn-holdemapp.com">德州扑克app</a> 看看它的界面和功能。没有下载门槛，浏览器打开就能用，适合先试试水再决定是否深入。
+    </p>
+
+    <div style="margin: 1rem 0 0.5rem 0;">
+      <span class="visit-tag">⚡ 零注册 · 直接使用</span>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>简洁博客 · 基于真实用户反馈编写 · 非官方参考页</span>
+  </footer>
+
+</body>
+</html>

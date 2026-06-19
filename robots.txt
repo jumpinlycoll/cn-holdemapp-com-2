@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jumpinlycoll.github.io/cn-holdemapp-com-2/sitemap.xml
